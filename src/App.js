@@ -4,7 +4,7 @@ import Nav from './components/Navigation/Nav';
 import { Outlet } from "react-router-dom";
 function App() {
   return (
-    <div>
+    <div className='app-container'>
       <Nav />
       <Outlet />
     </div>

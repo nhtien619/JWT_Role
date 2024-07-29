@@ -1,13 +1,33 @@
 .login-container {
-    padding: 20px;
+    padding-top: 40px;
+    min-height: 100vh;
+    background-color: #E8E9ED;
 
     .content-left {
         border: 0px solid gray;
+
+        .brand {
+            color: cornflowerblue;
+            font-size: 34px;
+            font-weight: bold;
+        }
     }
 
     .content-right {
-        border: 1px solid gray;
         border-radius: 5px;
         padding: 10px;
+        background-color: #f2f2f2;
+
+        .forgot-password {
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .line {
+        border-bottom: 1px solid gray;
     }
 }
