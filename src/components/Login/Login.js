@@ -1,7 +1,18 @@
 
 import React from 'react';
 import './Login.scss'
+
+import { useNavigate, useParams } from 'react-router-dom';
+
+
 const Login = (props) => {
+    const navigate = useNavigate();
+    const handleCreateNewAccount = () => {
+
+        navigate('/register');
+    }
+
+
     return (
         <div className='login-container'>
             <div className='container'>
@@ -23,7 +34,10 @@ const Login = (props) => {
                             <a className='forgot-password text-center'>Forgot your password?</a>
                             <div className='line'></div>
                             <div className='text-center'>
-                                <button className='btn btn-success'>Create new account</button>
+                                <button className='btn btn-success'
+                                    onClick={() => { handleCreateNewAccount(); }}>
+                                    Create new account
+                                </button>
                             </div>
                         </div>
                     </div>

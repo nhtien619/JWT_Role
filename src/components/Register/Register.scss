@@ -1,0 +1,25 @@
+.register-container {
+    padding-top: 20px;
+    min-height: 100vh;
+    background-color: #E8E9ED;
+
+    .register-border {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+
+        .border-radio {
+            padding: 5px;
+            border: 1px solid #80808080;
+            border-radius: 5px;
+        }
+
+        .form-check .form-check-input {
+            float: right;
+            margin-left: 10px;
+            width: 14px;
+            height: 14px;
+        }
+
+
+    }
+}
