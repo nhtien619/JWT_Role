@@ -33,7 +33,7 @@ root.render(
       draggable
       pauseOnHover
       theme="dark" />
-      //?stacked
+    {/* stacked */}
   </React.StrictMode>
 
   // <React.StrictMode>
