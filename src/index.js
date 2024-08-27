@@ -15,13 +15,14 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path='/login' element={<Login />} />
+        <Route path='/*' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route element={<App />}>
 
         </Route>
       </Routes>
     </BrowserRouter>
+
     <ToastContainer style={{ "width": 250, "fontSize": 16 }}
       position="top-right"
       autoClose={5000}

@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import formatHelpers from '../../helpers/strUtility';
-
+import userService from '../../services/userService';
 
 const Register = (props) => {
     const navigate = useNavigate();
@@ -61,14 +61,19 @@ const Register = (props) => {
         if (!isValidate())
             return;
 
-        await axios.post('http://localhost:8082/api/register', {
-            registerData
-        }).then(rs => {
-            console.log('check data call api: ', rs);
-        });
+        //? Call api to register new user
+        let response = await userService.registerNewUser(registerData);
+        console.log('>>>> response: ', response);
+        if (response.code > 0) {
+            toast.success('Register successful.');
+            //? delay 2s to navigate the login page
+            setTimeout(() => {
+                navigate('/login');
+            }, 2000);
+        }
+        else
+            toast.error(response.message);
 
-
-        toast.success('Register successful.');
     }
 
 
@@ -134,7 +139,6 @@ const Register = (props) => {
     }
 
 
-
     return (
         <div className='register-container'>
             <div className='d-flex flex-nowrap justify-content-center'>
@@ -145,6 +149,8 @@ const Register = (props) => {
                             <label>Sign Up</label>
                             <span className='title-small-text'>Easy to create new account</span>
                         </div>
+
+
 
                         <input type='text'
                             className={objCheckValidInputs.isValidateUsername ? 'form-control' : 'form-control is-invalid'}
@@ -157,17 +163,17 @@ const Register = (props) => {
                             Please choose a username.
                         </span> */}
 
-                        <input type='tel'
-                            className={objCheckValidInputs.isValidatePhone ? 'form-control' : 'form-control is-invalid'}
-                            placeholder='Phone number...'
-                            value={phone}
-                            onChange={(event) => { setPhone(formatHelpers.PhoneFormat(event.target.value, phone)); }} />
-
                         <input type='email'
                             className={objCheckValidInputs.isValidateEmail ? 'form-control' : 'form-control is-invalid'}
                             placeholder='Email address...'
                             value={email}
                             onChange={(event) => { setEmail(event.target.value); }} />
+
+                        <input type='tel'
+                            className={objCheckValidInputs.isValidatePhone ? 'form-control' : 'form-control is-invalid'}
+                            placeholder='Phone number...'
+                            value={phone}
+                            onChange={(event) => { setPhone(formatHelpers.PhoneFormat(event.target.value, phone)); }} />
 
                         <input type='password'
                             className={objCheckValidInputs.isValidatePassword ? 'form-control' : 'form-control is-invalid'}
